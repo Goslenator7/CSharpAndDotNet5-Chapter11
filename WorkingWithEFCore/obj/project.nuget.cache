@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Ofus+V3wieYwkhlEi5vtjDBSs6ePHQHwAht/uFi+5UPU3Q86P3xgIsYfP0nY4eeAP6cxAhvDPQYP22MqrrpSFA==",
+  "dgSpecHash": "z3lO+qpOV7vFw7sya16bElRXsvJ4UtyR14z5fQjUsz2HR7AF6ht3sX1k9Yeg4i28TjsPYfPlnRTrH4AOdUwLmw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Ryan\\Documents\\Coding\\C#AndDotNet5 Mk2\\Chapter11\\WorkingWithEFCore\\WorkingWithEFCore.csproj",
+  "projectFilePath": "C:\\Users\\Ryan\\Documents\\Coding\\C#AndDotNet5 Mk2\\Chapter11\\WorkingWithEfCore\\WorkingWithEFCore.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Ryan\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Ryan\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
