@@ -3,6 +3,9 @@ using static System.Console;
 using Packt.Shared;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
+using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 
 namespace WorkingWithEFCore
 {
@@ -12,6 +15,9 @@ namespace WorkingWithEFCore
         {
             using (var db = new Northwind())
             {
+                var loggerFactory = db.GetService<ILoggerFactory>();
+                loggerFactory.AddProvider(new ConsoleLoggerProvider());
+
                 WriteLine("Products that cost more than a price, highest cost first: ");
                 string input;
                 decimal price;
@@ -37,6 +43,9 @@ namespace WorkingWithEFCore
         {
            using (var db = new Northwind())
            {
+                var loggerFactory = db.GetService<ILoggerFactory>();
+                loggerFactory.AddProvider(new ConsoleLoggerProvider());
+
              WriteLine("Categories and how many products they have:");
 
              //a query to get all categories and their related products
@@ -74,11 +83,31 @@ namespace WorkingWithEFCore
             }
         }
 
+        static void QueryingWithLike()
+        {
+            using (var db = new Northwind())
+            {
+                var loggerFactory = db.GetService<ILoggerFactory>();
+                loggerFactory.AddProvider(new ConsoleLoggerProvider());
+
+                Write("Enter part of a product name: ");
+                string input = ReadLine();
+
+                IQueryable<Product>prods = db.Products.Where(p => EF.Functions.Like(p.ProductName, $"%{input}%"));
+
+                foreach(Product item in prods)
+                {
+                    WriteLine($"{item.ProductName} has {item.Stock} in stock. Discontinued? {item.Discontinued}");
+                }
+            }
+        }
+
         static void Main(string[] args)
         {
             //QueryingCategories();
-            FilteredIncludes();
+            //FilteredIncludes();
             //QueryingProducts();
+            QueryingWithLike();
         }
     }
 }
