@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Ryan\\Documents\\Coding\\C#AndDotNet5 Mk2\\Chapter11\\WorkingWithEfCore\\WorkingWithEFCore.csproj": {}
+    "C:\\Users\\Ryan\\Documents\\Coding\\C#AndDotNet5 Mk2\\Chapter11\\WorkingWithEFCore\\WorkingWithEFCore.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Ryan\\Documents\\Coding\\C#AndDotNet5 Mk2\\Chapter11\\WorkingWithEfCore\\WorkingWithEFCore.csproj": {
+    "C:\\Users\\Ryan\\Documents\\Coding\\C#AndDotNet5 Mk2\\Chapter11\\WorkingWithEFCore\\WorkingWithEFCore.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Ryan\\Documents\\Coding\\C#AndDotNet5 Mk2\\Chapter11\\WorkingWithEfCore\\WorkingWithEFCore.csproj",
+        "projectUniqueName": "C:\\Users\\Ryan\\Documents\\Coding\\C#AndDotNet5 Mk2\\Chapter11\\WorkingWithEFCore\\WorkingWithEFCore.csproj",
         "projectName": "WorkingWithEFCore",
-        "projectPath": "C:\\Users\\Ryan\\Documents\\Coding\\C#AndDotNet5 Mk2\\Chapter11\\WorkingWithEfCore\\WorkingWithEFCore.csproj",
+        "projectPath": "C:\\Users\\Ryan\\Documents\\Coding\\C#AndDotNet5 Mk2\\Chapter11\\WorkingWithEFCore\\WorkingWithEFCore.csproj",
         "packagesPath": "C:\\Users\\Ryan\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Ryan\\Documents\\Coding\\C#AndDotNet5 Mk2\\Chapter11\\WorkingWithEfCore\\obj\\",
+        "outputPath": "C:\\Users\\Ryan\\Documents\\Coding\\C#AndDotNet5 Mk2\\Chapter11\\WorkingWithEFCore\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Ryan\\AppData\\Roaming\\NuGet\\NuGet.Config",
