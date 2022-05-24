@@ -172,7 +172,7 @@ namespace WorkingWithEFCore
             }
         }
 
-        //Update methods
+        //Update method
         static bool IncreaseProductPrice(string name, decimal amount)
         {
             using (var db = new Northwind())
@@ -191,11 +191,17 @@ namespace WorkingWithEFCore
         {
             using (var db = new Northwind())
             {
+                using (IDbContextTransaction t = db.Database.BeginTransaction())
+                {
+                    WriteLine($"Transaction isolation level: {t.GetDbTransaction().IsolationLevel}");
+                
                 IEnumerable<Product> products = db.Products.Where(p => p.ProductName.StartsWith(name));
 
                 db.Products.RemoveRange(products);
                 int affected = db.SaveChanges();
+                    t.Commit();
                 return affected;
+                }
             }
         }
 
