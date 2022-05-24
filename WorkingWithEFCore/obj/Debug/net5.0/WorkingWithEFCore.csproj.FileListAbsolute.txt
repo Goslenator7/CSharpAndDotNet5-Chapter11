@@ -50,3 +50,5 @@ C:\Users\Ryan\Documents\Coding\C#AndDotNet5 Mk2\Chapter11\WorkingWithEFCore\obj\
 C:\Users\Ryan\Documents\Coding\C#AndDotNet5 Mk2\Chapter11\WorkingWithEFCore\obj\Debug\net5.0\WorkingWithEFCore.genruntimeconfig.cache
 C:\Users\Ryan\Documents\Coding\C#AndDotNet5 Mk2\Chapter11\WorkingWithEFCore\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Design.dll
 C:\Users\Ryan\Documents\Coding\C#AndDotNet5 Mk2\Chapter11\WorkingWithEFCore\bin\Debug\net5.0\Humanizer.dll
+C:\Users\Ryan\Documents\Coding\C#AndDotNet5 Mk2\Chapter11\WorkingWithEFCore\bin\Debug\net5.0\Castle.Core.dll
+C:\Users\Ryan\Documents\Coding\C#AndDotNet5 Mk2\Chapter11\WorkingWithEFCore\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Proxies.dll

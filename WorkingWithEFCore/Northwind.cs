@@ -1,6 +1,6 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
-
+using Microsoft.EntityFrameworkCore.Proxies;
 
 namespace Packt.Shared  
 {
@@ -14,7 +14,7 @@ namespace Packt.Shared
 		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
 			string path = System.IO.Path.Combine(System.Environment.CurrentDirectory, "Northwind.db");
-			optionsBuilder.UseSqlite($"Filename={path}");
+			optionsBuilder.UseLazyLoadingProxies().UseSqlite($"Filename={path}");
         }
 
 		protected override void OnModelCreating(ModelBuilder modelbuilder)

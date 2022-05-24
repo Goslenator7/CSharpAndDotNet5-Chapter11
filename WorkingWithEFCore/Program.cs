@@ -49,7 +49,7 @@ namespace WorkingWithEFCore
              WriteLine("Categories and how many products they have:");
 
              //a query to get all categories and their related products
-             IQueryable<Category> cats = db.Categories.Include(c => c.Products);
+             IQueryable<Category> cats = db.Categories; //.Include(c => c.Products);
 
              foreach (Category c in cats)
              {
@@ -104,10 +104,10 @@ namespace WorkingWithEFCore
 
         static void Main(string[] args)
         {
-            //QueryingCategories();
+            QueryingCategories();
             //FilteredIncludes();
             //QueryingProducts();
-            QueryingWithLike();
+            //QueryingWithLike();
         }
     }
 }
