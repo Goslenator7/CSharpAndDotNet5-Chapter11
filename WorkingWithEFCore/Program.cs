@@ -11,6 +11,8 @@ namespace WorkingWithEFCore
 {
     class Program
     {
+
+        // Query methods
         static void QueryingProducts()
         {
             using (var db = new Northwind())
@@ -133,12 +135,69 @@ namespace WorkingWithEFCore
             }
         }
 
+        static void ListProducts()
+        {
+            using (var db = new Northwind())
+            {
+                WriteLine($"{"ID", -3} {"Product Name", -35} {"Cost", 8} {"Stock", 5} {"Disc."}");
+
+                foreach (var item in db.Products.OrderByDescending(p => p.Cost))
+                {
+                    WriteLine($"{item.ProductID:000} {item.ProductName, -35} {item.Cost, 8:$#,##0.00} {item.Stock, 5} {item.Discontinued}");
+                }
+            }
+        }
+
+        // Insert method
+        static bool AddProduct(int categoryID, string productName, decimal? price)
+        {
+            using (var db = new Northwind())
+            {
+                var newProduct = new Product
+                {
+                    CategoryID = categoryID,
+                    ProductName = productName,
+                    Cost = price
+                };
+
+                //Mark product as added in change tracking
+                db.Products.Add(newProduct);
+
+                //save tracked changes to db
+                int affected = db.SaveChanges();
+                return (affected == 1);
+            }
+        }
+
+        //Update methods
+        static bool IncreaseProductPrice(string name, decimal amount)
+        {
+            using (var db = new Northwind())
+            {
+                //get first product whose name starts with name
+                Product updateProduct = db.Products.First(p => p.ProductName.StartsWith(name));
+
+                updateProduct.Cost += amount;
+                int affected = db.SaveChanges();
+                return (affected == 1);
+            }
+        }
+
         static void Main(string[] args)
         {
-            QueryingCategories();
+            //QueryingCategories();
             //FilteredIncludes();
             //QueryingProducts();
             //QueryingWithLike();
+            /*if (AddProduct(6, "Bob's Burgers", 500M))
+            {
+                WriteLine("Add product successful!");
+            }*/
+            if (IncreaseProductPrice("Bob", 20M))
+            {
+                WriteLine("Update product price successful!");
+            }
+            ListProducts();
         }
     }
 }
