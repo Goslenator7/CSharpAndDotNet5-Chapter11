@@ -1,11 +1,14 @@
 ﻿using System;
+using System.Linq;
+using System.Collections.Generic;
 using static System.Console;
 using Packt.Shared;
 using Microsoft.EntityFrameworkCore;
-using System.Linq;
+using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+
 
 namespace WorkingWithEFCore
 {
@@ -183,6 +186,19 @@ namespace WorkingWithEFCore
             }
         }
 
+        //Delete method
+        static int DeleteProducts(string name)
+        {
+            using (var db = new Northwind())
+            {
+                IEnumerable<Product> products = db.Products.Where(p => p.ProductName.StartsWith(name));
+
+                db.Products.RemoveRange(products);
+                int affected = db.SaveChanges();
+                return affected;
+            }
+        }
+
         static void Main(string[] args)
         {
             //QueryingCategories();
@@ -192,11 +208,13 @@ namespace WorkingWithEFCore
             /*if (AddProduct(6, "Bob's Burgers", 500M))
             {
                 WriteLine("Add product successful!");
-            }*/
+            }
             if (IncreaseProductPrice("Bob", 20M))
             {
                 WriteLine("Update product price successful!");
-            }
+            }*/
+            int deleted = DeleteProducts("Bob");
+            WriteLine($"{deleted} product(s) were deleted from the database.");
             ListProducts();
         }
     }
