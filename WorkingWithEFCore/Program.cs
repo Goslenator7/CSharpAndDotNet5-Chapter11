@@ -49,10 +49,41 @@ namespace WorkingWithEFCore
              WriteLine("Categories and how many products they have:");
 
              //a query to get all categories and their related products
-             IQueryable<Category> cats = db.Categories; //.Include(c => c.Products);
+             IQueryable<Category> cats; // = db.Categories; .Include(c => c.Products);
+
+                db.ChangeTracker.LazyLoadingEnabled = false;
+
+                Write("Enable eager loading? (Y/N): ");
+                bool eagerLoading = (ReadKey().Key == ConsoleKey.Y);
+                bool explicitLoading = false;
+                WriteLine();
+
+                if (eagerLoading)
+                {
+                    cats = db.Categories.Include(c => c.Products);
+                }
+                else
+                {
+                    cats = db.Categories;
+
+                    Write("Enable explicit loading? (Y/N): ");
+                    explicitLoading = (ReadKey().Key == ConsoleKey.Y);
+                    WriteLine();
+                }
 
              foreach (Category c in cats)
              {
+               if (explicitLoading)
+                    {
+                        Write($"Explicitly load products for {c.CategoryName}? (Y/N): ");
+                        ConsoleKeyInfo key = ReadKey();
+                        WriteLine();
+                        if(key.Key == ConsoleKey.Y)
+                        {
+                            var products = db.Entry(c).Collection(c2 => c2.Products);
+                            if (!products.IsLoaded) products.Load();
+                        }
+                    }
                WriteLine($"{c.CategoryName} has {c.Products.Count} products.");
              }
            }
