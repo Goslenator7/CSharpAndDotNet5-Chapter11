@@ -30,6 +30,9 @@ namespace Packt.Shared
 			modelbuilder.Entity<Product>()
 				.Property(product => product.Cost)
 				.HasConversion<double>();
+
+			//global filter to remove discontinued products
+			modelbuilder.Entity<Product>().HasQueryFilter(p => !p.Discontinued);
         }
     }
 }
